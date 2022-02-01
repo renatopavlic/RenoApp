@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Receipt from "./components/Receipt";
+import { fetchRandomReceipt } from "./helpers";
 
 function App() {
+  const [receipt, setReceipt] = useState<any>([]);
+
+  /* const getRandomReceipt = async () => {
+    const randomReceipt = await fetchRandomReceipt();
+    setReceipt(randomReceipt);
+    return;
+  }; */
+  useEffect(() => {
+    try {
+      const fetchReceipt = async () => {
+        const result = await fetchRandomReceipt();
+        setReceipt(result);
+      };
+
+      fetchReceipt();
+      //getRandomReceipt();
+    } catch (error) {}
+  }, []);
+
+  console.log("receipt", receipt);
+  console.log("conosle from app");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Oh shit, here we go again</h2>
+      <Receipt receipt={receipt} />
     </div>
   );
 }
