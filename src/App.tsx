@@ -5,21 +5,15 @@ import { fetchRandomReceipt } from "./helpers";
 function App() {
   const [receipt, setReceipt] = useState<any>([]);
 
-  /* const getRandomReceipt = async () => {
-    const randomReceipt = await fetchRandomReceipt();
-    setReceipt(randomReceipt);
-    return;
-  }; */
   useEffect(() => {
-    try {
-      const fetchReceipt = async () => {
+    (async () => {
+      try {
         const result = await fetchRandomReceipt();
         setReceipt(result);
-      };
-
-      fetchReceipt();
-      //getRandomReceipt();
-    } catch (error) {}
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    })();
   }, []);
 
   console.log("receipt", receipt);
