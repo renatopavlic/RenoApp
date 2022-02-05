@@ -1,10 +1,12 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Box from "@mui/material/Box";
-import Switch from "@mui/material/Switch";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Switch,
+  FormControlLabel,
+  FormGroup,
+} from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 
@@ -17,6 +19,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const handleModeSwitch = () => {
     setDarkMode((state) => !state);
   };
+
+  console.log("navbar");
 
   return (
     <AppBar position="fixed" color="primary">

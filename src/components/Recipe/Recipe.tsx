@@ -3,7 +3,6 @@ import {
   Grid,
   Typography,
   Box,
-  Container,
   List,
   ListItem,
   ListItemAvatar,
@@ -36,8 +35,10 @@ const Recipe: React.FC<RecipeProps> = (props: any) => {
   const defaultImage =
     "https://www.automobili.ba/wp-content/uploads/2020/10/reno.jpg";
 
+  console.log("recipe");
+
   return (
-    <Container style={{ marginTop: 50, paddingTop: 50 }}>
+    <Box style={{ marginTop: 50, paddingTop: 50 }}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <Typography variant={sm ? "h3" : "h2"} color="primary">
@@ -113,7 +114,7 @@ const Recipe: React.FC<RecipeProps> = (props: any) => {
           </Box>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 
