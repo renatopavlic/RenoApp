@@ -1,9 +1,12 @@
-export interface RandomReceipt {
+export interface RecipeProps {
+  recipe: RandomRecipe;
+}
+
+export interface RandomRecipe {
   title: string;
   readyInMinutes: number | null;
   image: string;
   instructions: string;
-  summary: string;
   cuisines: string[];
   extendedIngredients: Ingredient[];
   analyzedInstructions: Instruction[];
@@ -11,7 +14,6 @@ export interface RandomReceipt {
 
 export interface Ingredient {
   amount: number;
-  image: string | null;
   measure: string;
   name: string;
 }
