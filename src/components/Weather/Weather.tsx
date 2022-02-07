@@ -1,67 +1,72 @@
-import { Box, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  Box,
+  FormControl,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+
+import { initialWeather } from "./consts";
 import { getCurrentWeather } from "../../services/weather/api";
+import { Weather as WeatherType } from "../../services/weather/types";
+import WeatherCard from "./WeatherCard";
+import { useWeatherStyle } from "./styled";
+import { theme } from "../../style/theme";
 
 const Weather = () => {
-  const [weather, setWeather] = useState([]);
+  const md = useMediaQuery(theme.breakpoints.down("md"));
+  const classes = useWeatherStyle(md);
+  const [weather, setWeather] = useState<WeatherType>(initialWeather);
+  const [city, setCity] = useState<string>("");
+
+  const handleCityChange = (e: any) => {
+    setCity(e.target.value);
+  };
 
   useEffect(() => {
     (async () => {
       try {
-        const res = await getCurrentWeather("London");
+        const res = await getCurrentWeather(city);
         setWeather(res);
       } catch (error) {
         console.log("weather error");
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("weather: ", weather);
-
-  const data = {
-    forecast: [
-      {
-        date: "Fri 27 November",
-        description: "Clear",
-        icon: "SVG PATH",
-        temperature: { min: "-0", max: "6" },
-        wind: "2",
-        humidity: 60,
-      },
-      {
-        date: "Sat 28 November",
-        description: "Clouds",
-        icon: "SVG PATH",
-        temperature: { min: "-1", max: "6" },
-        wind: "3",
-        humidity: 67,
-      },
-      {
-        date: "Sat 28 November",
-        description: "Clouds",
-        icon: "SVG PATH",
-        temperature: { min: "-1", max: "6" },
-        wind: "3",
-        humidity: 67,
-      },
-    ],
-    current: {
-      date: "Fri 27 November",
-      description: "Clear",
-      icon: "SVG PATH",
-      temperature: { current: "-2", min: -3, max: 1 },
-      wind: "2",
-      humidity: 90,
-    },
-  };
-
-  console.log("data", data);
+  console.log("md:", md);
 
   return (
-    <Box>
-      <Typography variant="h3" color="primary">
+    <Box className={classes.container}>
+      <Typography variant="h3" className={classes.title}>
         Weather
       </Typography>
+      <Box className={classes.cardContainer}>
+        <FormControl>
+          <TextField
+            id="standard-basic"
+            variant="standard"
+            label="City"
+            helperText="Select a city"
+            value={city}
+            onChange={handleCityChange}
+            fullWidth
+            inputProps={{
+              style: { fontSize: 35, color: "white" },
+            }}
+            InputLabelProps={{ style: { fontSize: 20, color: "white" } }}
+            FormHelperTextProps={{
+              style: {
+                fontSize: 20,
+                color: "white",
+              },
+            }}
+          />
+        </FormControl>
+        <WeatherCard weather={weather} md={md} />
+      </Box>
     </Box>
   );
 };

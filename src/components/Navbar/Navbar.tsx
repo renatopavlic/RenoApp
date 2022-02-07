@@ -20,8 +20,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     setDarkMode((state) => !state);
   };
 
-  console.log("navbar");
-
   return (
     <AppBar position="fixed" color="primary">
       <Toolbar>

@@ -33,7 +33,7 @@ function App() {
     })();
   }, []);
 
-  console.log("app");
+  //console.log("theme", theme);
 
   return (
     <div className="App">
