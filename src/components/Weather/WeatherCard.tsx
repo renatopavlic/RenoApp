@@ -1,7 +1,12 @@
-import { CloudCircle } from "@mui/icons-material";
-import { Card, Box, CardContent, Typography, Divider } from "@mui/material";
 import React from "react";
-import { WeatherCardProps } from "../../services/weather/types";
+import ReactAnimatedWeather from "react-animated-weather";
+import { Card, Box, CardContent, Typography, Divider } from "@mui/material";
+
+import {
+  AnimationType,
+  WeatherCardProps,
+  WeatherType,
+} from "../../services/weather/types";
 import { useWeatherCardStyle } from "./styled";
 
 const WeatherCard: React.FC<WeatherCardProps> = (props) => {
@@ -9,6 +14,34 @@ const WeatherCard: React.FC<WeatherCardProps> = (props) => {
     props.weather;
 
   const classes = useWeatherCardStyle(props);
+
+  const defaults = {
+    icon: "CLEAR_DAY",
+    color: "white",
+    size: 150,
+    animate: true,
+  };
+
+  const resovedIcon = (description: string): string => {
+    switch (description) {
+      case WeatherType.ClearSky:
+        return AnimationType.ClearDay;
+      case WeatherType.Rain:
+      case WeatherType.Thunderstorm:
+        return AnimationType.Rain;
+      case WeatherType.ShowerRain:
+      case WeatherType.Snow:
+        return AnimationType.Snow;
+      case WeatherType.FewClouds:
+      case WeatherType.BrokenClouds:
+      case WeatherType.ScatteredClouds:
+        return AnimationType.Cloudy;
+      case WeatherType.Mist:
+        return AnimationType.Fog;
+      default:
+        return AnimationType.PartlyCloudyDay;
+    }
+  };
 
   return (
     <Card className={classes.container}>
@@ -36,7 +69,12 @@ const WeatherCard: React.FC<WeatherCardProps> = (props) => {
         </Box>
         <Box className={classes.contentRight}>
           <CardContent>
-            <CloudCircle />
+            <ReactAnimatedWeather
+              icon={resovedIcon(description)}
+              color={defaults.color}
+              size={defaults.size}
+              animate={defaults.animate}
+            />
           </CardContent>
         </Box>
       </Box>

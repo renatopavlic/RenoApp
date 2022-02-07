@@ -27,7 +27,7 @@ const Weather = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await getCurrentWeather(city);
+        const res = await getCurrentWeather("Karlovac");
         setWeather(res);
       } catch (error) {
         console.log("weather error");

@@ -46,13 +46,16 @@ export const useWeatherCardStyle = makeStyles<Theme>(() => {
     container: {
       minWidth: 275,
       width: "100%",
+      height: "100%",
       maxWidth: 600,
-      height: 300,
+      minHeight: 300,
       marginTop: (props: any) => (props.md ? 50 : 0),
-      marginLeft: (props: any) => (props.md ? 20 : 0),
+      marginLeft: (props: any) => (props.md ? 0 : 20),
     },
     content: {
       display: "flex",
+      //flexDirection: (props: any) => (props.md ? "column" : "flex"),
+      flexDirection: (props: any) => (props.md ? "column" : "row"),
       height: "100%",
     },
     contentLeft: {
@@ -61,7 +64,6 @@ export const useWeatherCardStyle = makeStyles<Theme>(() => {
       justifyContent: "space-evenly",
       flexGrow: 1,
       flexShrink: 0,
-      borderRight: "2px solid blue",
       padding: "0 30px",
       color: collorPallete.gray,
       background:
