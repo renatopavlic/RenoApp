@@ -1,8 +1,4 @@
-import {
-  Ingredient,
-  Instruction,
-  RandomRecipe,
-} from "../../components/Recipe/types";
+import { Ingredient, Instruction, RandomRecipe } from "./types";
 
 export const transformToRandomRecipe = (res: any): RandomRecipe => {
   const { recipes } = res;

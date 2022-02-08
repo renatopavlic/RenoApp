@@ -54,7 +54,6 @@ export const useWeatherCardStyle = makeStyles<Theme>(() => {
     },
     content: {
       display: "flex",
-      //flexDirection: (props: any) => (props.md ? "column" : "flex"),
       flexDirection: (props: any) => (props.md ? "column" : "row"),
       height: "100%",
     },

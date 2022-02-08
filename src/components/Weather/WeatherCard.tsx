@@ -2,12 +2,10 @@ import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
 import { Card, Box, CardContent, Typography, Divider } from "@mui/material";
 
-import {
-  AnimationType,
-  WeatherCardProps,
-  WeatherType,
-} from "../../services/weather/types";
 import { useWeatherCardStyle } from "./styled";
+import { weatherOptions } from "./consts";
+import { WeatherCardProps } from "./types";
+import { AnimationType, WeatherType } from "../../services/weather/types";
 
 const WeatherCard: React.FC<WeatherCardProps> = (props) => {
   const { name, date, temp, maxTemp, minTemp, description, wind, humidity } =
@@ -15,13 +13,9 @@ const WeatherCard: React.FC<WeatherCardProps> = (props) => {
 
   const classes = useWeatherCardStyle(props);
 
-  const defaults = {
-    icon: "CLEAR_DAY",
-    color: "white",
-    size: 150,
-    animate: true,
-  };
+  console.log("weather card");
 
+  // TODO useMemo ?
   const resovedIcon = (description: string): string => {
     switch (description) {
       case WeatherType.ClearSky:
@@ -71,9 +65,9 @@ const WeatherCard: React.FC<WeatherCardProps> = (props) => {
           <CardContent>
             <ReactAnimatedWeather
               icon={resovedIcon(description)}
-              color={defaults.color}
-              size={defaults.size}
-              animate={defaults.animate}
+              color={weatherOptions.color}
+              size={weatherOptions.size}
+              animate={weatherOptions.animate}
             />
           </CardContent>
         </Box>

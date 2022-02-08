@@ -14,9 +14,10 @@ import {
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 
-import { Ingredient, Instruction, RecipeProps } from "./types";
+import { RecipeProps } from "./types";
 import { useRecipeStyle } from "./styled";
 import { theme } from "../../style/theme";
+import { Ingredient, Instruction } from "../../services/recipe";
 
 const Recipe: React.FC<RecipeProps> = (props: any) => {
   const {
@@ -30,12 +31,14 @@ const Recipe: React.FC<RecipeProps> = (props: any) => {
   const classes = useRecipeStyle();
 
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
+  // TODO useMemo ?
   const responsiveTitle = sm ? "h4" : "h3";
 
+  // TODO add leader
   const defaultImage =
     "https://www.automobili.ba/wp-content/uploads/2020/10/reno.jpg";
 
-  //console.log("recipe");
+  console.log("recipe");
 
   return (
     <Box style={{ marginTop: 50, paddingTop: 50 }}>

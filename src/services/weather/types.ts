@@ -1,8 +1,3 @@
-export interface WeatherCardProps {
-  weather: Weather;
-  md: boolean;
-}
-
 export interface Weather {
   name: string;
   animationType: string; //Todo enum

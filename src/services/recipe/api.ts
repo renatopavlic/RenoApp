@@ -1,4 +1,4 @@
-import { RandomRecipe } from "../../components/Recipe/types";
+import { RandomRecipe } from "./types";
 import { transformToRandomRecipe } from "./transformation";
 
 export const fetchRandomRecipe = async (): Promise<RandomRecipe> => {

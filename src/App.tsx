@@ -4,11 +4,11 @@ import { Container, Paper } from "@mui/material";
 
 import { fetchRandomRecipe } from "./services/recipe/api";
 import { darkTheme, theme } from "./style/theme";
-import { RandomRecipe } from "./components/Recipe/types";
 import { initialRecipe } from "./components/Recipe/consts";
 import Navbar from "./components/Navbar/Navbar";
 import Recipe from "./components/Recipe/Recipe";
 import Weather from "./components/Weather/Weather";
+import { RandomRecipe } from "./services/recipe";
 import "./App.css";
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
     })();
   }, []);
 
-  //console.log("theme", theme);
+  console.log("app");
 
   return (
     <div className="App">

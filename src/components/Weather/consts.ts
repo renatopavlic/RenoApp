@@ -1,4 +1,6 @@
-export const initialWeather = {
+import { Weather } from "../../services/weather";
+
+export const initialWeather: Weather = {
   name: "Karlovac",
   date: "2022-02-22",
   temp: 0,
@@ -8,4 +10,11 @@ export const initialWeather = {
   wind: 0,
   animationType: "Clouds",
   description: "Clouds",
+};
+
+export const weatherOptions = {
+  icon: "CLEAR_DAY",
+  color: "white",
+  size: 150,
+  animate: true,
 };
