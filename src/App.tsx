@@ -33,8 +33,6 @@ function App() {
     })();
   }, []);
 
-  console.log("app");
-
   return (
     <div className="App">
       <ThemeProvider theme={darkMode ? darkTheme : theme}>

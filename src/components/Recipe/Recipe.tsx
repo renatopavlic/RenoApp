@@ -38,8 +38,6 @@ const Recipe: React.FC<RecipeProps> = (props: any) => {
   const defaultImage =
     "https://www.automobili.ba/wp-content/uploads/2020/10/reno.jpg";
 
-  console.log("recipe");
-
   return (
     <Box style={{ marginTop: 50, paddingTop: 50 }}>
       <Grid container spacing={4}>

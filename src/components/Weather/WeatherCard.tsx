@@ -13,9 +13,6 @@ const WeatherCard: React.FC<WeatherCardProps> = (props) => {
 
   const classes = useWeatherCardStyle(props);
 
-  console.log("weather card");
-
-  // TODO useMemo ?
   const resovedIcon = (description: string): string => {
     switch (description) {
       case WeatherType.ClearSky:
