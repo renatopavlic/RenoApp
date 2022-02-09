@@ -8,6 +8,7 @@ import { initialRecipe } from "./components/Recipe/consts";
 import Navbar from "./components/Navbar/Navbar";
 import Recipe from "./components/Recipe/Recipe";
 import Weather from "./components/Weather/Weather";
+import TodoList from "./components/TodoList/TodoList";
 import { RandomRecipe } from "./services/recipe";
 import "./App.css";
 
@@ -17,7 +18,6 @@ function App() {
   // Navigation
   // Redux
   // Docker
-  // Weather Api
 
   const [recipe, setRecipe] = useState<RandomRecipe>(initialRecipe);
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -42,6 +42,7 @@ function App() {
             <Recipe recipe={recipe} />
           </Container>
           <Weather />
+          <TodoList />
         </Paper>
       </ThemeProvider>
     </div>
