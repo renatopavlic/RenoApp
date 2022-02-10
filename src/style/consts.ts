@@ -10,7 +10,7 @@ export const collorPallete = {
 
 export const customPallete = createPalette({
   primary: {
-    main: collorPallete.green,
+    main: collorPallete.blue,
   },
   secondary: {
     main: collorPallete.blue,

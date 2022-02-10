@@ -11,12 +11,11 @@ import Weather from "./components/Weather/Weather";
 import TodoList from "./components/TodoList/TodoList";
 import { RandomRecipe } from "./services/recipe";
 import "./App.css";
+import { Provider } from "react-redux";
+import { store } from "./redux";
 
 function App() {
-  // Todo
-
   // Navigation
-  // Redux
   // Docker
 
   const [recipe, setRecipe] = useState<RandomRecipe>(initialRecipe);
@@ -35,16 +34,18 @@ function App() {
 
   return (
     <div className="App">
-      <ThemeProvider theme={darkMode ? darkTheme : theme}>
-        <Paper>
-          <Container>
-            <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-            <Recipe recipe={recipe} />
-            <TodoList />
-          </Container>
-          <Weather />
-        </Paper>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={darkMode ? darkTheme : theme}>
+          <Paper>
+            <Container>
+              <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+              <Recipe recipe={recipe} />
+              <TodoList />
+            </Container>
+            <Weather />
+          </Paper>
+        </ThemeProvider>
+      </Provider>
     </div>
   );
 }

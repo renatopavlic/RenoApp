@@ -1,18 +1,36 @@
 import React, { useState } from "react";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useTodoListStyle } from "./styled";
+import { useDispatch, useSelector } from "react-redux";
+import { getTodos } from "../../services/todos/redux/selectors";
+import { addTodo } from "../../services/todos/redux/actions";
+import { Todo } from "../../services/todos/redux/types";
+import TodoItem from "./TodoItem";
+import { initialTodo } from "./consts";
 
 const TodoList = () => {
+  const dispatch = useDispatch();
+  const todos = useSelector(getTodos);
+
   const classes = useTodoListStyle();
-  const [todo, setTodo] = useState<string>("");
+  const [todo, setTodo] = useState<Todo>(initialTodo);
+
+  const resetTodo = () => {
+    setTodo(initialTodo);
+  };
 
   const handleTodoChange = (e) => {
-    setTodo(e.target.value);
+    setTodo((oldState) => ({ ...oldState, description: e.target.value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("todo submit");
+    todo.id = Math.floor(Math.random() * 10000);
+    if (todo.description === "") return;
+
+    dispatch(addTodo(todo));
+
+    resetTodo();
   };
 
   return (
@@ -28,7 +46,7 @@ const TodoList = () => {
               variant="standard"
               label="Todo"
               helperText="Add new task"
-              value={todo}
+              value={todo.description}
               onChange={handleTodoChange}
               fullWidth
               inputProps={{
@@ -48,18 +66,11 @@ const TodoList = () => {
             </Box>
           </form>
         </Grid>
-        <Grid item xs={4}>
-          <Typography>Item One</Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography>Item Two</Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography>Item Three</Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography>Item Four</Typography>
-        </Grid>
+        {todos.map((todo: Todo, index: number) => (
+          <Grid item xs={12} sm={6} lg={4} key={index}>
+            <TodoItem todo={todo} />
+          </Grid>
+        ))}
       </Grid>
     </Box>
   );
