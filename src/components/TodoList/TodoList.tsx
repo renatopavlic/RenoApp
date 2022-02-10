@@ -1,14 +1,9 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
 import React, { useState } from "react";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { useTodoListStyle } from "./styled";
 
 const TodoList = () => {
+  const classes = useTodoListStyle();
   const [todo, setTodo] = useState<string>("");
 
   const handleTodoChange = (e) => {
@@ -21,11 +16,11 @@ const TodoList = () => {
   };
 
   return (
-    <Container>
-      <Box>
-        <Typography>Redux Playground</Typography>
-      </Box>
-      <Grid container spacing={3}>
+    <Box className={classes.container}>
+      <Typography variant="h3" color="primary">
+        Redux Playground
+      </Typography>
+      <Grid container spacing={3} pl={2} pt={2}>
         <Grid item xs={12}>
           <form onSubmit={handleSubmit}>
             <TextField
@@ -66,7 +61,7 @@ const TodoList = () => {
           <Typography>Item Four</Typography>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 

@@ -19,7 +19,7 @@ import { useRecipeStyle } from "./styled";
 import { theme } from "../../style/theme";
 import { Ingredient, Instruction } from "../../services/recipe";
 
-const Recipe: React.FC<RecipeProps> = (props: any) => {
+const Recipe: React.FC<RecipeProps> = (props) => {
   const {
     title,
     image,
@@ -31,10 +31,10 @@ const Recipe: React.FC<RecipeProps> = (props: any) => {
   const classes = useRecipeStyle();
 
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
-  // TODO useMemo ?
+
   const responsiveTitle = sm ? "h4" : "h3";
 
-  // TODO add leader
+  // TODO add loader
   const defaultImage =
     "https://www.automobili.ba/wp-content/uploads/2020/10/reno.jpg";
 

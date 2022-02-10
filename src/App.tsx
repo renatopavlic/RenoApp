@@ -40,9 +40,9 @@ function App() {
           <Container>
             <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
             <Recipe recipe={recipe} />
+            <TodoList />
           </Container>
           <Weather />
-          <TodoList />
         </Paper>
       </ThemeProvider>
     </div>
