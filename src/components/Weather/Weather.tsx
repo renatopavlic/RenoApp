@@ -18,7 +18,11 @@ import { Weather as WeatherType } from "../../services/weather";
 
 const Weather = () => {
   const md = useMediaQuery(theme.breakpoints.down("md"));
+  const sm = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const responsiveTitle = sm ? "h4" : "h3";
   const classes = useWeatherStyle(md);
+
   const [weather, setWeather] = useState<WeatherType>(initialWeather);
   const [city, setCity] = useState<string>("Karlovac");
 
@@ -33,7 +37,7 @@ const Weather = () => {
       const res = await getCurrentWeather(city);
       setWeather(res);
     } catch (error) {
-      console.log("form error");
+      console.log("form submit error");
     }
   };
 
@@ -52,7 +56,7 @@ const Weather = () => {
   return (
     <Box className={classes.container}>
       <Container>
-        <Typography variant="h3" className={classes.title}>
+        <Typography variant={responsiveTitle} className={classes.title}>
           Weather
         </Typography>
         <Box className={classes.cardContainer}>

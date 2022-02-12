@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useTodoListStyle } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodos } from "../../services/todos/redux/selectors";
@@ -7,10 +14,15 @@ import { addTodo } from "../../services/todos/redux/actions";
 import { Todo } from "../../services/todos/redux/types";
 import TodoItem from "./TodoItem";
 import { initialTodo } from "./consts";
+import { theme } from "../../style/theme";
 
 const TodoList = () => {
   const dispatch = useDispatch();
   const todos = useSelector(getTodos);
+
+  const sm = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const responsiveTitle = sm ? "h4" : "h3";
 
   const classes = useTodoListStyle();
   const [todo, setTodo] = useState<Todo>(initialTodo);
@@ -35,7 +47,7 @@ const TodoList = () => {
 
   return (
     <Box className={classes.container}>
-      <Typography variant="h3" color="primary">
+      <Typography variant={responsiveTitle} color="primary">
         Redux Playground
       </Typography>
       <Grid container spacing={3} pl={2} pt={2}>

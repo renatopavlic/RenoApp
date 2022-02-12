@@ -40,9 +40,12 @@ const Recipe: React.FC<RecipeProps> = (props) => {
 
   return (
     <Box style={{ marginTop: 50, paddingTop: 50 }}>
-      <Grid container spacing={4}>
+      <Typography variant={responsiveTitle} color="primary">
+        Random recipe
+      </Typography>
+      <Grid container spacing={4} mt={3}>
         <Grid item xs={12}>
-          <Typography variant={sm ? "h3" : "h2"} color="primary">
+          <Typography variant={responsiveTitle} color="primary">
             {title}
           </Typography>
         </Grid>

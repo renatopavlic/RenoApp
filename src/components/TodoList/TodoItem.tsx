@@ -9,6 +9,7 @@ import { useTodoListItemStyle } from "./styled";
 
 const TodoItem: React.FC<TodoItemProps> = (props) => {
   const classes = useTodoListItemStyle();
+
   const { todo } = props;
   const { id, description } = todo;
 

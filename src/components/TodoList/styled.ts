@@ -25,7 +25,6 @@ export const useTodoListItemStyle = makeStyles({
     marginBottom: 0,
     fontWeight: 900,
     textTransform: "uppercase",
-    fontSize: 20,
   },
   icon: {
     cursor: "pointer",
