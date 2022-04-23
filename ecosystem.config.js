@@ -2,7 +2,9 @@ module.exports = {
   apps: [
     {
       name: "Reno App",
-      script: "./src/deploy.js",
+      script: "yarn",
+      args: "start",
+      interpreter: "/bin/bash",
     },
   ],
   deploy: {
