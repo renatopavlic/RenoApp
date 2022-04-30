@@ -41,7 +41,7 @@ const Recipe: React.FC<RecipeProps> = (props) => {
   return (
     <Box style={{ marginTop: 50, paddingTop: 50 }}>
       <Typography variant={responsiveTitle} color="primary">
-        Daily random recipe
+        Daily random recipe!
       </Typography>
       <Grid container spacing={4} mt={3}>
         <Grid item xs={12}>
