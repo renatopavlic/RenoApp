@@ -38,7 +38,7 @@ const Recipe: React.FC<RecipeProps> = (props) => {
   const defaultImage =
     "https://www.automobili.ba/wp-content/uploads/2020/10/reno.jpg";
 
-  return (
+  return image ? (
     <Box style={{ marginTop: 50, paddingTop: 50 }}>
       <Typography variant={responsiveTitle} color="primary">
         Daily random recipe!
@@ -118,6 +118,13 @@ const Recipe: React.FC<RecipeProps> = (props) => {
           </Box>
         </Grid>
       </Grid>
+    </Box>
+  ) : (
+    <Box style={{ marginTop: 50, paddingTop: 50 }}>
+      <Typography variant={responsiveTitle} color="primary">
+        Random recipe api key has reached daily free limit. Try again tommarow
+        😎
+      </Typography>
     </Box>
   );
 };
